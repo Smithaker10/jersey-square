@@ -1,0 +1,2 @@
+-- See MCP-applied migration extend_products_sport_search_v2
+-- Adds sport, team, player, tags, popular, search_products(), product-images bucket

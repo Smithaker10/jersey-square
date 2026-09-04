@@ -1,0 +1,119 @@
+Attached Element Context from Integrated Browser
+
+Element: img.h-full.w-full.object-cover
+
+URL: http://localhost:3000/
+
+HTML Path: div#root > div.min-h-screen.bg-white > main > section.relative.py-12.sm:py-16 > div.relative.mx-auto.max-w-[1400px].px-4.sm:px-6.lg:px-8 > div.relative > div.scrollbar-hide.flex.gap-4.overflow-x-auto.pb-2.snap-x.snap-mandatory > div.w-[260px].shrink-0.snap-start.sm:w-[280px] > div.rounded-xl.bg-white/60.p-1.backdrop-blur-sm > article.group.relative.overflow-hidden.rounded-xl.bg-white.shadow-[0_2px_8px_rgba(0,0,0,0.08)].transition-shadow.duration-300.hover:shadow-[0_12px_32px_rgba(0,0,0,0.14)] > a.block > div.relative.aspect-[3/4].overflow-hidden.bg-gray-50 > img.h-full.w-full.object-cover
+
+Outer HTML:
+```html
+<img code-path="src\components\ProductCard.tsx:34:13" alt="Red Bull Racing 2025 Driver Jersey (Player Version)" loading="lazy" class="h-full w-full object-cover" src="/products2/asset_2.jpg" style="transform: scale(1.06);">
+```
+
+Dimensions:
+- top: 444px
+- left: 316px
+- width: 288px
+- height: 384px
+
+CSS:
+```css
+element { transform: scale(1.06); }
+*, ::before, ::after { --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ; }
+*, ::before, ::after { box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: #e5e7eb; /* 2 */ }
+* { border-color: hsl(var(--border)); }
+img, svg, video, canvas, audio, iframe, embed, object { display: block; /* 1 */
+  vertical-align: middle; /* 2 */ }
+img, video { max-width: 100%;
+  height: auto; }
+.h-full { height: 100%; }
+.w-full { width: 100%; }
+.object-cover { -o-object-fit: cover;
+     object-fit: cover; }
+
+/* Pseudo-elements */
+::before, ::after { --tw-content: ''; }
+
+/* Inherited */
+a { color: inherit }
+body { color: hsl(var(--foreground)) }
+html, :host { line-height: 1.5; tab-size: 4 }
+
+/* Resolved values */
+border: 0px solid rgb(228, 228, 231);
+box-sizing: border-box;
+color: rgb(9, 9, 11);
+cursor: pointer /*UA*/;
+display: block;
+font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+font-feature-settings: normal;
+height: 362.662px;
+line-height: 24px;
+max-width: 100%;
+object-fit: cover;
+overflow-clip-margin: content-box /*UA*/;
+overflow-x: clip /*UA*/;
+overflow-y: clip /*UA*/;
+tab-size: 4;
+transform: matrix(1.06, 0, 0, 1.06, 0, 0);
+vertical-align: middle;
+width: 272.006px;
+
+/* CSS variables */
+--border: 240 5.9% 90%;
+--foreground: 240 10% 3.9%;
+```

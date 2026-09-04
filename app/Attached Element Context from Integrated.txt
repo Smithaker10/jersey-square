@@ -1,0 +1,114 @@
+Attached Element Context from Integrated Browser
+
+Element: span.text-xs.font-semibold.tracking-[2px].inline-block
+
+URL: http://localhost:3000/
+
+HTML Path: div#root > div.min-h-screen.bg-white > div.fixed.top-0.left-0.right-0.z-50.bg-[#1a1a1a].text-white.transition-transform.duration-300 > div.flex.items-center.h-9.overflow-hidden > div.flex-1.overflow-hidden > div.marquee.whitespace-nowrap > span.text-xs.font-semibold.tracking-[2px].inline-block
+
+Outer HTML:
+```html
+<span code-path="src\components\AnnouncementBar.tsx:21:13" class="text-xs font-semibold tracking-[2px] inline-block">COD AVAILABLE • COD AVAILABLE • COD AVAILABLE • COD AVAILABLE • COD AVAILABLE • COD AVAILABLE • COD AVAILABLE • COD AVAILABLE • COD AVAILABLE • COD AVAILABLE • COD AVAILABLE • COD AVAILABLE • COD AVAILABLE • COD AVAILABLE • COD AVAILABLE • COD AVAILABLE • COD AVAILABLE • COD AVAILABLE • COD AVAILABLE • COD AVAILABLE</span>
+```
+
+Dimensions:
+- top: 12px
+- left: -465px
+- width: 2610px
+- height: 16px
+
+CSS:
+```css
+*, ::before, ::after { --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ; }
+*, ::before, ::after { box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: #e5e7eb; /* 2 */ }
+* { border-color: hsl(var(--border)); }
+.inline-block { display: inline-block; }
+.text-xs { font-size: 0.75rem;
+  line-height: 1rem; }
+.font-semibold { font-weight: 600; }
+.tracking-\[2px\] { letter-spacing: 2px; }
+.marquee span { animation: marquee 30s linear infinite; }
+
+/* Pseudo-elements */
+::before, ::after { --tw-content: ''; }
+
+/* Inherited */
+.whitespace-nowrap { white-space: nowrap }
+.text-white { color: rgb(255 255 255 / var(--tw-text-opacity, 1)) }
+body { color: hsl(var(--foreground)) }
+html, :host { line-height: 1.5; tab-size: 4 }
+
+/* Resolved values */
+border: 0px solid rgb(228, 228, 231);
+animation: marquee 30s linear infinite;
+box-sizing: border-box;
+color: rgb(255, 255, 255);
+display: inline-block;
+font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+font-feature-settings: normal;
+font-size: 12px;
+font-weight: 600;
+height: 16px;
+letter-spacing: 2px;
+line-height: 16px;
+tab-size: 4;
+width: 2609.95px;
+
+/* CSS variables */
+--border: 240 5.9% 90%;
+--tw-text-opacity: 1;
+--foreground: 240 10% 3.9%;
+```
