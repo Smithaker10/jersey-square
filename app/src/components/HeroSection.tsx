@@ -60,6 +60,9 @@ export function HeroSection() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       // Normalize values between -1 and 1
       const x = (e.clientX / window.innerWidth) * 2 - 1;
@@ -144,7 +147,7 @@ export function HeroSection() {
         }}
         transition={{ type: 'tween', ease: 'easeOut', duration: 0.8 }}
       >
-        {/* Layer 1: Formula 1 Video */}
+        {/* Layer 1: Formula 1 Video (Desktop) & Ultra-sharp Portrait Visual (Mobile) */}
         <motion.div
           style={{ y: videoY }}
           className="absolute inset-0 w-full h-full overflow-hidden"
@@ -158,18 +161,32 @@ export function HeroSection() {
             scale: { duration: 6, ease: 'easeOut' },
           }}
         >
-          <video
-            ref={videoRef}
-            className="h-[115%] w-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster="/hero-bg.jpg"
-            aria-label="JerseySquare cinematic hero"
-          >
-            <source src="/hero.mp4" type="video/mp4" />
-          </video>
+          {/* Mobile: Ultra-sharp 9:16 Portrait Visual - zero lag, instant load, retina crisp */}
+          <div className="block sm:hidden h-full w-full relative">
+            <img
+              src="/hero-mobile.webp"
+              alt="JerseySquare authentic sportswear collection"
+              className="h-[115%] w-full object-cover object-center"
+              loading="eager"
+              fetchPriority="high"
+            />
+          </div>
+
+          {/* Desktop: High definition widescreen video */}
+          <div className="hidden sm:block h-full w-full">
+            <video
+              ref={videoRef}
+              className="h-[115%] w-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster="/hero-bg.jpg"
+              aria-label="JerseySquare cinematic hero"
+            >
+              <source src="/hero.mp4" type="video/mp4" />
+            </video>
+          </div>
         </motion.div>
 
         {/* Layer 2: Football Jersey Collection */}
@@ -222,16 +239,17 @@ export function HeroSection() {
         className="absolute inset-0 bg-black z-[1]"
         style={{ opacity: overlayOpacity }}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/15 to-black/40 z-[2]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-black/50 z-[2]" />
       <div className="absolute inset-0 bg-gradient-to-r from-[#1B2A4A]/30 to-transparent z-[2]" />
 
+      {/* Decorative ambient blurred blobs - hidden on mobile to prevent GPU lag */}
       <motion.div
-        className="pointer-events-none absolute -left-20 top-1/4 h-64 w-64 rounded-full bg-white/10 blur-3xl"
+        className="pointer-events-none absolute -left-20 top-1/4 h-64 w-64 rounded-full bg-white/10 blur-3xl hidden sm:block"
         animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.div
-        className="pointer-events-none absolute -right-20 bottom-1/4 h-48 w-48 rounded-full bg-[#1B2A4A]/20 blur-3xl"
+        className="pointer-events-none absolute -right-20 bottom-1/4 h-48 w-48 rounded-full bg-[#1B2A4A]/20 blur-3xl hidden sm:block"
         animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
       />

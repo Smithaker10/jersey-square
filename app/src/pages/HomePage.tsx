@@ -8,8 +8,6 @@ import { CatalogStatus } from '@/components/catalog/CatalogStatus';
 import { useCatalogStore } from '@/store/catalogStore';
 import type { Sport } from '@/types/product';
 
-const HEADER_OFFSET = 136;
-
 export function HomePage() {
   const products = useCatalogStore((s) => s.products);
   const categories = useCatalogStore((s) => s.categories);
@@ -18,74 +16,84 @@ export function HomePage() {
   const getCategoriesBySport = useCatalogStore((s) => s.getCategoriesBySport);
 
   const footballCategories = useMemo(() => {
+    let cats = [];
     const fromDb = getCategoriesBySport('football');
     if (fromDb.length > 0) {
-      return fromDb
+      cats = fromDb
         .filter((cat) =>
           products.some((p) => p.sport === 'football' && p.category === cat.id),
         )
         .filter((cat) => cat.id !== 'indian-embroidery')
-        .map((c) => ({ id: c.id, title: c.title, subtitle: c.subtitle }));
+        .map((c) => ({
+          id: c.id,
+          title: c.title,
+          subtitle: c.subtitle,
+          count: products.filter((p) => p.sport === 'football' && p.category === c.id).length,
+        }));
+    } else {
+      const ids = [
+        ...new Set(
+          products.filter((p) => p.sport === 'football').map((p) => p.category),
+        ),
+      ];
+      cats = ids
+        .filter((id) => id !== 'indian-embroidery')
+        .map((id) => ({
+          id,
+          title: id.replace(/-/g, ' ').toUpperCase(),
+          subtitle: '',
+          count: products.filter((p) => p.sport === 'football' && p.category === id).length,
+        }));
     }
-    const ids = [
-      ...new Set(
-        products.filter((p) => p.sport === 'football').map((p) => p.category),
-      ),
+
+    const totalFootballCount = products.filter((p) => p.sport === 'football').length;
+    return [
+      {
+        id: 'all',
+        title: 'ALL JERSEYS',
+        subtitle: 'Explore our complete authentic football jersey collection.',
+        count: totalFootballCount,
+      },
+      ...cats,
     ];
-    return ids.map((id) => ({
-      id,
-      title: id.replace(/-/g, ' ').toUpperCase(),
-      subtitle: '',
-    })).filter((cat) => cat.id !== 'indian-embroidery');
   }, [products, categories, getCategoriesBySport]);
 
-  const [activeSection, setActiveSection] = useState(
-    footballCategories[0]?.id ?? 'fan-version',
-  );
+  const [activeCategory, setActiveCategory] = useState('all');
 
   useEffect(() => {
     if (
       footballCategories.length > 0 &&
-      !footballCategories.some((c) => c.id === activeSection)
+      !footballCategories.some((c) => c.id === activeCategory)
     ) {
-      setActiveSection(footballCategories[0].id);
+      setActiveCategory('all');
     }
-  }, [footballCategories, activeSection]);
+  }, [footballCategories, activeCategory]);
 
   const footballProducts = products.filter((p) => p.sport === 'football');
   const f1Products = products.filter((p) => p.sport === 'f1');
   const cricketProducts = products.filter((p) => p.sport === 'cricket');
 
-  const handleTabClick = useCallback((sectionId: string) => {
-    setActiveSection(sectionId);
-    const scrollToSection = () => {
-      const element = document.getElementById(sectionId);
-      if (!element) return;
+  const handleTabClick = useCallback((categoryId: string) => {
+    setActiveCategory(categoryId);
+    // Smoothly scroll to the top of the #shop container so the selected category header & products are in clear view
+    const shopElement = document.getElementById('shop');
+    if (shopElement) {
+      const isMobile = window.innerWidth < 640;
+      const headerOffset = isMobile ? 110 : 130;
       const top =
-        element.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+        shopElement.getBoundingClientRect().top + window.scrollY - headerOffset;
       window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
-    };
-    scrollToSection();
-    window.setTimeout(scrollToSection, 100);
+    }
   }, []);
 
-  useEffect(() => {
-    if (footballCategories.length === 0) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]?.target.id) setActiveSection(visible[0].target.id);
-      },
-      { rootMargin: `-${HEADER_OFFSET}px 0px -55% 0px`, threshold: [0, 0.15, 0.5] },
-    );
-    footballCategories.forEach((cat) => {
-      const el = document.getElementById(cat.id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, [footballCategories]);
+  // Filter sections based on active category
+  const displayedCategories = useMemo(() => {
+    const rawCategories = footballCategories.filter((c) => c.id !== 'all');
+    if (activeCategory === 'all') {
+      return rawCategories;
+    }
+    return rawCategories.filter((c) => c.id === activeCategory);
+  }, [footballCategories, activeCategory]);
 
   const sportCollections: { sport: Sport; items: typeof products }[] = [
     { sport: 'football', items: footballProducts },
@@ -107,10 +115,10 @@ export function HomePage() {
           <>
             <CategoryTabs
               categories={footballCategories}
-              activeSection={activeSection}
+              activeSection={activeCategory}
               onTabClick={handleTabClick}
             />
-            {footballCategories.map((category) => (
+            {displayedCategories.map((category) => (
               <ProductSection key={category.id} category={category} />
             ))}
           </>

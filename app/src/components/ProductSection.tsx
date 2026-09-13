@@ -28,7 +28,7 @@ export function ProductSection({ category, sport = 'football' }: ProductSectionP
     <section
       id={category.id}
       ref={sectionRef}
-      className="scroll-mt-[160px] py-6 sm:py-12"
+      className="scroll-mt-[120px] sm:scroll-mt-[160px] py-4 sm:py-8"
     >
       <div className="mx-auto max-w-[1400px] px-2.5 sm:px-6 lg:px-8">
         <motion.div
