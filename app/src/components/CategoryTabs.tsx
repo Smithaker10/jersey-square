@@ -4,7 +4,6 @@ import { useScrollDirection } from '@/hooks/useScrollDirection';
 export interface TabCategory {
   id: string;
   title: string;
-  count?: number;
 }
 
 interface CategoryTabsProps {
@@ -61,17 +60,6 @@ export function CategoryTabs({
                 }`}
               >
                 <span>{cat.title}</span>
-                {cat.count !== undefined && cat.count > 0 && (
-                  <span
-                    className={`ml-1.5 rounded-full px-1.5 py-0.5 text-[10px] font-extrabold transition-colors ${
-                      isActive
-                        ? 'bg-white/20 text-white'
-                        : 'bg-gray-100 text-gray-600 group-hover:bg-gray-200'
-                    }`}
-                  >
-                    {cat.count}
-                  </span>
-                )}
               </button>
             );
           })}
