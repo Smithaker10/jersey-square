@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Instagram, MessageCircle, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 
@@ -116,8 +116,18 @@ export function HeroSection() {
     };
   }, [scheduleAuto]);
 
-  const isVideo = stage === 'video';
   const config = stageConfig[stage];
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      if (stage === 'video') {
+        videoRef.current.play().catch(() => {});
+      } else {
+        videoRef.current.pause();
+      }
+    }
+  }, [stage]);
 
   return (
     <section
@@ -127,60 +137,84 @@ export function HeroSection() {
     >
       {/* Outer wrapper for mouse move parallax */}
       <motion.div
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full pointer-events-none"
         animate={{
           x: mousePos.x * 8,
           y: mousePos.y * 8,
         }}
         transition={{ type: 'tween', ease: 'easeOut', duration: 0.8 }}
       >
-        <AnimatePresence mode="wait">
-          {isVideo ? (
-            <motion.div
-              key="video"
-              style={{ y: videoY }}
-              className="absolute inset-0 w-full h-full"
-              initial={{ scale: 1.15, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ opacity: 0, scale: 1.05 }}
-              transition={{
-                opacity: { duration: 1.2, ease: 'easeOut' },
-                scale: { duration: 8, ease: 'easeOut' }
-              }}
-            >
-              <video
-                className="h-[115%] w-full object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-                poster="/hero-bg.jpg"
-                aria-label={config.alt}
-              >
-                <source src={config.src} type="video/mp4" />
-              </video>
-            </motion.div>
-          ) : (
-            <motion.div
-              key={stage}
-              style={{ y: imageY }}
-              className="absolute inset-0 w-full h-full"
-              initial={{ opacity: 0, scale: 1.15 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.05 }}
-              transition={{
-                opacity: { duration: 1.2, ease: 'easeOut' },
-                scale: { duration: 8, ease: 'easeOut' }
-              }}
-            >
-              <img
-                src={config.src}
-                alt={config.alt}
-                className="h-[115%] w-full object-cover"
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Layer 1: Formula 1 Video */}
+        <motion.div
+          style={{ y: videoY }}
+          className="absolute inset-0 w-full h-full overflow-hidden"
+          initial={false}
+          animate={{
+            opacity: stage === 'video' ? 1 : 0,
+            scale: stage === 'video' ? 1 : 1.05,
+          }}
+          transition={{
+            opacity: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+            scale: { duration: 6, ease: 'easeOut' },
+          }}
+        >
+          <video
+            ref={videoRef}
+            className="h-[115%] w-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/hero-bg.jpg"
+            aria-label="JerseySquare cinematic hero"
+          >
+            <source src="/hero.mp4" type="video/mp4" />
+          </video>
+        </motion.div>
+
+        {/* Layer 2: Football Jersey Collection */}
+        <motion.div
+          style={{ y: imageY }}
+          className="absolute inset-0 w-full h-full overflow-hidden"
+          initial={false}
+          animate={{
+            opacity: stage === 'jersey' ? 1 : 0,
+            scale: stage === 'jersey' ? 1 : 1.05,
+          }}
+          transition={{
+            opacity: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+            scale: { duration: 6, ease: 'easeOut' },
+          }}
+        >
+          <img
+            src="/herojersey.webp"
+            alt="Football Jersey collection"
+            className="h-[115%] w-full object-cover"
+            loading="eager"
+          />
+        </motion.div>
+
+        {/* Layer 3: Cricket Jersey Collection */}
+        <motion.div
+          style={{ y: imageY }}
+          className="absolute inset-0 w-full h-full overflow-hidden"
+          initial={false}
+          animate={{
+            opacity: stage === 'cricket' ? 1 : 0,
+            scale: stage === 'cricket' ? 1 : 1.05,
+          }}
+          transition={{
+            opacity: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+            scale: { duration: 6, ease: 'easeOut' },
+          }}
+        >
+          <img
+            src="/cricket.webp"
+            alt="Cricket Jersey collection"
+            className="h-[115%] w-full object-cover"
+            loading="eager"
+          />
+        </motion.div>
       </motion.div>
 
       {/* Dynamic dark overlay */}

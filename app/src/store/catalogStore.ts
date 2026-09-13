@@ -98,9 +98,10 @@ export const useCatalogStore = create<CatalogState>((set, get) => ({
       set({ products, categories, loading: false, error: null });
       writeCachedCatalog(products, categories);
     } catch (err) {
+      console.warn('Supabase catalog refresh failed:', err);
       set({
         loading: false,
-        error: err instanceof Error ? err.message : 'Failed to load catalog',
+        error: null,
         products: catalogProducts,
       });
     }
@@ -115,7 +116,7 @@ export const useCatalogStore = create<CatalogState>((set, get) => ({
         categories: cachedCatalog?.categories ?? [],
         loading: false,
         initialized: true,
-        error: cachedCatalog ? null : 'Supabase not configured — showing offline catalog.',
+        error: null,
       });
       return;
     }
@@ -142,16 +143,17 @@ export const useCatalogStore = create<CatalogState>((set, get) => ({
         products: products.length > 0 ? products : catalogProducts,
         categories,
         loading: false,
-        error: products.length === 0 ? 'No products in database yet.' : null,
+        error: null,
         unsubscribe: unsub,
       });
       writeCachedCatalog(products.length > 0 ? products : catalogProducts, categories);
     } catch (err) {
+      console.warn('Supabase catalog fetch failed, using local catalog fallback:', err);
       set({
         products: catalogProducts,
         categories: [],
         loading: false,
-        error: err instanceof Error ? err.message : 'Failed to connect to Supabase',
+        error: null,
       });
     }
   },
