@@ -276,7 +276,7 @@ export function ProfilePage() {
                       <p className="mt-1 text-xs text-gray-500">Jerseys you like will be saved here.</p>
                     </div>
                   ) : (
-                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
                       {wishlistedProducts.map((prod) => (
                         <ProductCard key={prod.id} product={prod} />
                       ))}
@@ -294,7 +294,7 @@ export function ProfilePage() {
                       <p className="mt-1 text-xs text-gray-500">Jerseys you browse will show up here.</p>
                     </div>
                   ) : (
-                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
                       {recentProducts.map((prod) => (
                         <ProductCard key={prod.id} product={prod} />
                       ))}

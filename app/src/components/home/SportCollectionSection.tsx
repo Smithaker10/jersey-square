@@ -62,7 +62,7 @@ export function SportCollectionSection({ sport, products }: SportCollectionSecti
     <section ref={sectionRef} className="relative z-0">
       <div
         className="relative overflow-hidden isolate"
-        style={{ height: 'clamp(420px, 52vh, 600px)' }}
+        style={{ height: 'clamp(320px, 48vh, 600px)' }}
       >
         {/* Stadium background with ultra-slow Ken Burns loop */}
         <div className="pointer-events-none absolute inset-0 z-0">
@@ -115,7 +115,7 @@ export function SportCollectionSection({ sport, products }: SportCollectionSecti
             className="block font-black leading-none text-white"
             aria-hidden="true"
             style={{
-              fontSize: 'clamp(120px, 18vw, 220px)',
+              fontSize: 'clamp(60px, 14vw, 220px)',
               opacity: 0.015,
               letterSpacing: '3px',
               lineHeight: 0.8,
@@ -127,13 +127,13 @@ export function SportCollectionSection({ sport, products }: SportCollectionSecti
           </span>
         </motion.div>
 
-        <div className="relative z-10 mx-auto flex h-full max-w-[1400px] items-center px-[72px] lg:px-[120px] xl:px-[160px]">
+        <div className="relative z-10 mx-auto flex h-full max-w-[1400px] items-center px-4 sm:px-8 lg:px-[120px] xl:px-[160px]">
           <div className="flex w-full max-w-[520px] flex-col">
             <motion.span
               initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, ease: 'easeOut' }}
-              className="mb-4 text-[12px] font-semibold uppercase tracking-[0.45em]"
+              className="mb-2 sm:mb-4 text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.45em]"
               style={{ color: accent }}
             >
               Collection
@@ -142,7 +142,7 @@ export function SportCollectionSection({ sport, products }: SportCollectionSecti
             {/* Split Character/Word Reveal */}
             <h2
               className="font-bold leading-none text-white flex flex-wrap"
-              style={{ fontSize: 'clamp(40px, 6vw, 64px)', textShadow: '0 2px 12px rgba(0,0,0,0.5)' }}
+              style={{ fontSize: 'clamp(28px, 6vw, 64px)', textShadow: '0 2px 12px rgba(0,0,0,0.5)' }}
             >
               {titleLetters.map((char, index) => (
                 <motion.span
@@ -165,8 +165,8 @@ export function SportCollectionSection({ sport, products }: SportCollectionSecti
               initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
-              className="mt-5 max-w-[460px] text-[19px] text-white/95"
-              style={{ lineHeight: '1.7', textShadow: '0 1px 8px rgba(0,0,0,0.4)' }}
+              className="mt-3 sm:mt-5 max-w-[460px] text-xs sm:text-base md:text-[19px] text-white/95"
+              style={{ lineHeight: '1.6', textShadow: '0 1px 8px rgba(0,0,0,0.4)' }}
             >
               {subtitles[sport]}
             </motion.p>
@@ -175,23 +175,23 @@ export function SportCollectionSection({ sport, products }: SportCollectionSecti
               initial={{ scaleX: 0 }}
               animate={inView ? { scaleX: 1 } : {}}
               transition={{ duration: 0.9, ease: 'easeOut', delay: 0.35 }}
-              className="mt-[28px] h-[3px] origin-left rounded-full"
-              style={{ width: '70px', backgroundColor: accent }}
+              className="mt-3 sm:mt-[28px] h-[3px] origin-left rounded-full"
+              style={{ width: '60px', backgroundColor: accent }}
             />
 
             <motion.div
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="mt-6"
+              className="mt-4 sm:mt-6"
             >
               <Link
                 to={config.path}
-                className="group relative inline-flex items-center gap-2 text-[15px] font-medium tracking-wide text-white/80 transition-colors hover:text-white"
+                className="group relative inline-flex items-center gap-2 text-xs sm:text-[15px] font-medium tracking-wide text-white/80 transition-colors hover:text-white"
               >
                 <span>View Collection</span>
                 <ArrowUpRight
-                  size={16}
+                  size={15}
                   className="transition-all duration-300 group-hover:translate-x-[4px] group-hover:-translate-y-[4px]"
                 />
                 <span
@@ -206,7 +206,7 @@ export function SportCollectionSection({ sport, products }: SportCollectionSecti
 
       <div className="bg-[#F8F6F2]">
         <div
-          className="relative mx-auto max-w-[1400px] px-[72px] lg:px-[120px] xl:px-[160px]"
+          className="relative mx-auto max-w-[1400px] px-3 sm:px-8 lg:px-[120px] xl:px-[160px]"
           style={{ marginTop: '-24px' }}
         >
           {hero && (
@@ -227,35 +227,35 @@ export function SportCollectionSection({ sport, products }: SportCollectionSecti
                   borderColor: cardHover ? 'rgba(0,0,0,0.12)' : 'rgba(0,0,0,0.06)',
                 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-                className="flex items-center justify-between rounded-[20px] border bg-white/90 px-6 py-4 backdrop-blur-sm cursor-pointer"
+                className="flex items-center justify-between rounded-[14px] sm:rounded-[20px] border bg-white/90 px-3.5 py-2.5 sm:px-6 sm:py-4 backdrop-blur-sm cursor-pointer shadow-xs"
               >
                 <Link
                   to={`/product/${hero.id}`}
-                  className="group flex items-center gap-4"
+                  className="group flex items-center gap-3 sm:gap-4"
                 >
-                  <div className="h-14 w-14 shrink-0 overflow-hidden rounded-xl sm:h-16 sm:w-16">
+                  <div className="h-11 w-11 shrink-0 overflow-hidden rounded-lg sm:h-16 sm:w-16 sm:rounded-xl bg-gray-50 flex items-center justify-center p-1">
                     <motion.img
                       src={hero.image}
                       alt={hero.title}
-                      className="h-full w-full object-cover"
+                      className="h-full w-full object-contain"
                       animate={{ scale: cardHover ? 1.08 : 1 }}
                       transition={{ duration: 0.4 }}
                     />
                   </div>
                   <div>
-                    <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-gray-400">
+                    <p className="text-[8px] sm:text-[9px] font-semibold uppercase tracking-[0.3em] text-gray-400">
                       Featured Collection
                     </p>
-                    <h3 className="text-[14px] font-semibold text-gray-800 transition-colors group-hover:text-gray-600 sm:text-[15px]">
+                    <h3 className="text-xs sm:text-[15px] font-semibold text-gray-800 transition-colors group-hover:text-gray-600 line-clamp-1">
                       {hero.title}
                     </h3>
-                    <p className="text-[12px] text-gray-400">
+                    <p className="text-[11px] sm:text-[12px] font-bold text-gray-500 sm:text-gray-400">
                       ₹{hero.price.toLocaleString('en-IN')}
                     </p>
                   </div>
                 </Link>
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 sm:gap-4 shrink-0">
                   <Link
                     to={config.path}
                     className="group relative hidden items-center gap-1.5 text-[13px] font-medium tracking-wide text-gray-400 transition-colors hover:text-gray-600 sm:inline-flex"
@@ -278,12 +278,12 @@ export function SportCollectionSection({ sport, products }: SportCollectionSecti
             </motion.div>
           )}
 
-          <div className="relative pb-16 pt-6 sm:pb-20 sm:pt-8">
-            <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-16 bg-gradient-to-l from-[#F8F6F2] to-transparent" />
+          <div className="relative pb-10 sm:pb-20 pt-4 sm:pt-8">
+            <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-10 sm:w-16 bg-gradient-to-l from-[#F8F6F2] to-transparent" />
 
             <div
               ref={scrollRef}
-              className="scrollbar-hide flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory sm:gap-6"
+              className="scrollbar-hide flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory sm:gap-6"
             >
               {rest.map((product, i) => (
                 <motion.div
@@ -296,9 +296,9 @@ export function SportCollectionSection({ sport, products }: SportCollectionSecti
                     duration: 0.8,
                     ease: [0.16, 1, 0.3, 1]
                   }}
-                  className="w-[260px] shrink-0 snap-start sm:w-[280px]"
+                  className="w-[160px] shrink-0 snap-start sm:w-[260px] md:w-[280px]"
                 >
-                  <div className="overflow-hidden rounded-[18px] bg-white shadow-[0_2px_16px_rgba(0,0,0,0.06)] transition-shadow duration-500 hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)]">
+                  <div className="overflow-hidden rounded-[14px] sm:rounded-[18px] bg-white shadow-[0_2px_12px_rgba(0,0,0,0.06)] transition-shadow duration-500 hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)]">
                     <ProductCard product={product} />
                   </div>
                 </motion.div>

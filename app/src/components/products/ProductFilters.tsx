@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { SlidersHorizontal, ChevronDown } from 'lucide-react';
 import type { FilterState, Sport } from '@/types/product';
 import { useCatalogStore } from '@/store/catalogStore';
 import { SPORTS } from '@/config/sports';
@@ -15,6 +17,7 @@ export function ProductFilters({
   sportLocked,
   showSportFilter = true,
 }: ProductFiltersProps) {
+  const [mobileOpen, setMobileOpen] = useState(false);
   const products = useCatalogStore((s) => s.products);
   const sportKey = sportLocked ?? (filters.sport !== 'all' ? filters.sport : undefined);
   const teams = [
@@ -32,11 +35,30 @@ export function ProductFilters({
   const patch = (partial: Partial<FilterState>) =>
     onChange({ ...filters, ...partial });
 
+  const activeFiltersCount =
+    (filters.sport !== 'all' && !sportLocked ? 1 : 0) +
+    (filters.category !== 'all' ? 1 : 0) +
+    (filters.team !== 'all' ? 1 : 0) +
+    (filters.sort !== 'popular' ? 1 : 0);
+
   return (
-    <div className="flex flex-col gap-4 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm lg:sticky lg:top-[120px]">
-      <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-400">
-        Filters
-      </h3>
+    <div className="flex flex-col rounded-xl border border-gray-100 bg-white p-3.5 shadow-sm lg:sticky lg:top-[120px] sm:rounded-2xl sm:p-4">
+      <button
+        type="button"
+        onClick={() => setMobileOpen(!mobileOpen)}
+        className="flex items-center justify-between font-bold text-xs uppercase tracking-wider text-gray-700 lg:hidden py-1"
+      >
+        <span className="flex items-center gap-2">
+          <SlidersHorizontal size={14} className="text-[#1B2A4A]" />
+          Filters & Sort {activeFiltersCount > 0 && `(${activeFiltersCount})`}
+        </span>
+        <ChevronDown size={16} className={`transition-transform duration-200 ${mobileOpen ? 'rotate-180' : ''}`} />
+      </button>
+
+      <div className={`${mobileOpen ? 'mt-3 flex' : 'hidden'} lg:flex flex-col gap-4`}>
+        <h3 className="hidden lg:block text-xs font-semibold uppercase tracking-wider text-gray-400">
+          Filters
+        </h3>
 
       {showSportFilter && !sportLocked && (
         <label className="flex flex-col gap-1.5">
@@ -138,6 +160,7 @@ export function ProductFilters({
           <option value="price-desc">Price: High to Low</option>
         </select>
       </label>
+      </div>
     </div>
   );
 }

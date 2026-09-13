@@ -204,13 +204,13 @@ export function HeroSection() {
 
       <motion.div
         style={{ y: contentY, scale: contentScale, opacity: contentOpacity }}
-        className="relative z-10 flex h-full w-full flex-col items-center justify-center px-4 pb-36 pt-[120px] text-center"
+        className="relative z-10 flex h-full w-full flex-col items-center justify-center px-4 pb-28 pt-[85px] sm:pb-36 sm:pt-[120px] text-center"
       >
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.7 }}
-          className="mb-6 text-center text-xs font-semibold uppercase tracking-[0.45em] text-white/80 sm:text-sm"
+          className="mb-3 sm:mb-6 text-center text-[11px] font-semibold uppercase tracking-[0.35em] text-white/80 sm:text-sm"
         >
           Premium Sportswear
         </motion.p>
@@ -219,7 +219,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.8 }}
-          className="mb-6 text-center text-5xl font-black tracking-tight text-white sm:text-7xl lg:text-[6.5rem] xl:text-[7rem] leading-none uppercase"
+          className="mb-4 sm:mb-6 text-center text-4xl font-black tracking-tight text-white sm:text-7xl lg:text-[6.5rem] xl:text-[7rem] leading-none uppercase"
         >
           {siteConfig.brandNameDisplay}
         </motion.h1>
@@ -228,7 +228,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.7 }}
-          className="mb-10 max-w-[600px] text-center text-sm text-white/80 sm:text-base md:text-lg leading-relaxed"
+          className="mb-6 sm:mb-10 max-w-[90%] sm:max-w-[600px] text-center text-xs text-white/80 sm:text-base md:text-lg leading-relaxed"
         >
           Football · Formula 1 · Cricket — authentic jerseys, crafted for fans who demand more.
         </motion.p>
@@ -237,24 +237,24 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="mb-12 flex flex-wrap items-center justify-center gap-4"
+          className="mb-8 sm:mb-12 flex flex-wrap items-center justify-center gap-2.5 sm:gap-4"
         >
           <a
             href={siteConfig.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-6 py-3 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur-md transition-all hover:bg-white/15"
+            className="flex items-center gap-1.5 sm:gap-2 rounded-full border border-white/30 bg-white/5 px-4 py-2 sm:px-6 sm:py-3 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-white backdrop-blur-md transition-all hover:bg-white/15"
           >
-            <Instagram size={14} />
+            <Instagram size={13} />
             Instagram
           </a>
           <a
             href={siteConfig.whatsappGroupUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-6 py-3 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur-md transition-all hover:bg-white/15"
+            className="flex items-center gap-1.5 sm:gap-2 rounded-full border border-white/30 bg-white/5 px-4 py-2 sm:px-6 sm:py-3 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-white backdrop-blur-md transition-all hover:bg-white/15"
           >
-            <MessageCircle size={14} />
+            <MessageCircle size={13} />
             WhatsApp
           </a>
         </motion.div>
@@ -263,18 +263,18 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.75 }}
-          className="flex flex-row items-center justify-center gap-6 sm:gap-8"
+          className="flex flex-row items-center justify-center gap-3 sm:gap-8"
         >
           <MagneticButton
             to="/football"
-            className="inline-flex h-14 items-center justify-center gap-3 rounded-full bg-white px-8 text-xs font-bold uppercase tracking-wider text-[#1a1a1a] shadow-xl shadow-black/25 transition-all hover:bg-white/95"
+            className="inline-flex h-11 sm:h-14 items-center justify-center gap-2 sm:gap-3 rounded-full bg-white px-5 sm:px-8 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#1a1a1a] shadow-xl shadow-black/25 transition-all hover:bg-white/95"
           >
             SHOP NOW
-            <ArrowRight size={16} />
+            <ArrowRight size={14} />
           </MagneticButton>
           <MagneticButton
             to={config.link}
-            className="inline-flex h-14 items-center justify-center gap-2 rounded-full border border-white/40 bg-white/5 px-8 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md transition-all hover:bg-white/15"
+            className="inline-flex h-11 sm:h-14 items-center justify-center gap-1.5 sm:gap-2 rounded-full border border-white/40 bg-white/5 px-5 sm:px-8 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md transition-all hover:bg-white/15"
           >
             {config.label}
           </MagneticButton>

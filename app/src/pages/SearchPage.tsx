@@ -87,24 +87,24 @@ export function SearchPage() {
   return (
     <div className="pt-[100px]">
       <CatalogStatus error={error} />
-      <div className="border-b border-gray-100 bg-[#EDE8E0]/30 px-4 py-10 sm:px-6 lg:px-8">
+      <div className="border-b border-gray-100 bg-[#EDE8E0]/30 px-3 py-5 sm:px-6 sm:py-10 lg:px-8">
         <div className="mx-auto max-w-[1400px]">
-          <h1 className="text-2xl font-black text-[#1a1a1a] sm:text-3xl">
+          <h1 className="text-xl font-black text-[#1a1a1a] sm:text-3xl">
             {query ? `Results for "${query}"` : 'Shop all jerseys'}
           </h1>
-          <div className="mt-6 max-w-xl">
+          <div className="mt-3 max-w-xl sm:mt-6">
             <SearchBar />
           </div>
         </div>
       </div>
 
-      <div className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-8 lg:flex-row">
+      <div className="mx-auto max-w-[1400px] px-2.5 py-3 sm:px-6 sm:py-10 lg:px-8">
+        <div className="flex flex-col gap-3 lg:flex-row lg:gap-8">
           <div className="shrink-0 lg:w-64">
             <ProductFilters filters={filters} onChange={setFilters} />
           </div>
           <div className="min-w-0 flex-1">
-            <p className="mb-4 text-sm text-gray-500">
+            <p className="mb-2.5 text-xs text-gray-500 sm:mb-4 sm:text-sm">
               {filtered.length} result{filtered.length !== 1 ? 's' : ''}
             </p>
             <ProductGrid

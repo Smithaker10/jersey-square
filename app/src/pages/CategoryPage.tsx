@@ -67,7 +67,7 @@ export function CategoryPage() {
   return (
     <div className="pt-[100px]">
       <CatalogStatus error={error} />
-      <div className="border-b border-gray-100 px-4 py-10 sm:px-6 lg:px-8">
+      <div className="border-b border-gray-100 px-3 py-5 sm:px-6 sm:py-10 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -88,12 +88,12 @@ export function CategoryPage() {
             {' / '}
             <span className="text-[#1a1a1a]">{label}</span>
           </nav>
-          <h1 className="text-3xl font-black uppercase text-[#1a1a1a]">{label}</h1>
+          <h1 className="text-2xl font-black uppercase text-[#1a1a1a] sm:text-3xl">{label}</h1>
         </motion.div>
       </div>
 
-      <div className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-8 lg:flex-row">
+      <div className="mx-auto max-w-[1400px] px-2.5 py-3 sm:px-6 sm:py-10 lg:px-8">
+        <div className="flex flex-col gap-3 lg:flex-row lg:gap-8">
           <div className="lg:w-64 shrink-0">
             <ProductFilters
               filters={filters}

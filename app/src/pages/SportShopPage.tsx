@@ -72,7 +72,7 @@ export function SportShopPage() {
   return (
     <div className="pt-[100px]">
       <CatalogStatus loading={loading} error={error} />
-      <div className="relative overflow-hidden bg-[#1B2A4A] px-4 py-16 text-white sm:px-6 lg:px-8">
+      <div className="relative overflow-hidden bg-[#1B2A4A] px-4 py-8 text-white sm:px-6 sm:py-16 lg:px-8">
         <div className="absolute inset-0 bg-gradient-to-br from-black/30 to-transparent" />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -82,15 +82,15 @@ export function SportShopPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-white/60">
             JerseySquare · Official Collection
           </p>
-          <h1 className="mt-2 text-3xl font-black sm:text-5xl">{config.label}</h1>
-          <p className="mt-3 max-w-xl text-white/75">{config.description}</p>
+          <h1 className="mt-2 text-2xl font-black sm:text-5xl">{config.label}</h1>
+          <p className="mt-2 max-w-xl text-xs sm:mt-3 sm:text-base text-white/75">{config.description}</p>
         </motion.div>
       </div>
 
       {sport === 'football' && <ClubShowcaseSection />}
 
-      <div className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-8 lg:flex-row">
+      <div className="mx-auto max-w-[1400px] px-2.5 py-3 sm:px-6 sm:py-10 lg:px-8">
+        <div className="flex flex-col gap-3 lg:flex-row lg:gap-8">
           <div className="shrink-0 lg:w-64">
             <ProductFilters
               filters={filters}
@@ -100,7 +100,7 @@ export function SportShopPage() {
             />
           </div>
           <div className="min-w-0 flex-1">
-            <p className="mb-4 text-sm text-gray-500">
+            <p className="mb-2.5 text-xs text-gray-500 sm:mb-4 sm:text-sm">
               {filtered.length} product{filtered.length !== 1 ? 's' : ''}
             </p>
             <ProductGrid products={filtered} loading={loading} />
